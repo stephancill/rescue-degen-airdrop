@@ -4,10 +4,15 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
+patchedDependencies:
+  viem@2.21.1:
+    hash: zojdttpkqbogunnz5lqlmhog2q
+    path: patches/viem@2.21.1.patch
+
 dependencies:
   viem:
     specifier: ^2.21.1
-    version: 2.21.1(typescript@5.5.4)
+    version: 2.21.1(patch_hash=zojdttpkqbogunnz5lqlmhog2q)(typescript@5.5.4)
 
 devDependencies:
   '@types/node':
@@ -466,7 +471,7 @@ packages:
     resolution: {integrity: sha512-ve2KP6f/JnbPBFyobGHuerC9g1FYGn/F8n1LWTwNxCEzd6IfqTwUQcNXgEtmmQ6DlRrC1hrSrBnCZPokRrDHjw==}
     dev: true
 
-  /viem@2.21.1(typescript@5.5.4):
+  /viem@2.21.1(patch_hash=zojdttpkqbogunnz5lqlmhog2q)(typescript@5.5.4):
     resolution: {integrity: sha512-nlIc2LLS6aqkngULS9UJ2Sg3nHKAgF9bbpDUwjUoAUBijd69mrCWPBXQ8jmbzcx12uZUfd9Nc//CHgSVZiMwyg==}
     peerDependencies:
       typescript: '>=5.0.4'
@@ -489,6 +494,7 @@ packages:
       - utf-8-validate
       - zod
     dev: false
+    patched: true
 
   /webauthn-p256@0.0.5:
     resolution: {integrity: sha512-drMGNWKdaixZNobeORVIqq7k5DsRC9FnG201K2QjeOoQLmtSDaSsVZdkg6n5jUALJKcAG++zBPJXmv6hy0nWFg==}

@@ -1,6 +1,6 @@
 {
   "name": "rescue-degen-airdrop",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A script for rescuing degen airdrops",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -18,11 +18,16 @@
     "viem": "^2.21.1"
   },
   "devDependencies": {
-    "@types/yargs": "^17.0.33",
-    "yargs": "^17.7.2",
     "@types/node": "^22.5.3",
+    "@types/yargs": "^17.0.33",
     "dotenv": "^16.4.5",
     "tsx": "^4.19.0",
-    "typescript": "^5.5.4"
+    "typescript": "^5.5.4",
+    "yargs": "^17.7.2"
+  },
+  "pnpm": {
+    "patchedDependencies": {
+      "viem@2.21.1": "patches/viem@2.21.1.patch"
+    }
   }
 }

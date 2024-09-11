@@ -171,23 +171,38 @@ async function main() {
 
   console.log("Found replayable userOp");
 
-  // Deploy wallet
-  const deployTx = await degenWalletClient.sendTransaction({
-    to: deployUserOp.initCode.slice(0, 42) as `0x${string}`,
-    data: ("0x" + deployUserOp.initCode.slice(42)) as `0x${string}`,
+  const isDeployed = await degenClient.getCode({
+    address: argv.wallet as `0x${string}`,
   });
 
-  console.log("Deployed", deployTx);
+  if (!isDeployed) {
+    // Deploy wallet
+    console.log("Deploying wallet");
+    const deployTx = await degenWalletClient.sendTransaction({
+      to: deployUserOp.initCode.slice(0, 42) as `0x${string}`,
+      data: ("0x" + deployUserOp.initCode.slice(42)) as `0x${string}`,
+    });
 
-  // Replay recovery address on destination
-  const replayTx = await degenWalletClient.writeContract({
-    abi: entryPoint06Abi,
-    address: entryPoint06Address,
-    functionName: "handleOps",
-    args: [[replayableUserOp], recoveryOwnerAccount.address],
+    console.log("Deployed", deployTx);
+  }
+
+  const ownerCount = await degenClient.readContract({
+    abi: coinbaseSmartWalletAbi,
+    functionName: "ownerCount",
+    address: argv.wallet as `0x${string}`,
   });
 
-  console.log("Replayed", replayTx);
+  if (ownerCount === BigInt(1)) {
+    // Replay recovery address on destination
+    const replayTx = await degenWalletClient.writeContract({
+      abi: entryPoint06Abi,
+      address: entryPoint06Address,
+      functionName: "handleOps",
+      args: [[replayableUserOp], recoveryOwnerAccount.address],
+    });
+
+    console.log("Replayed", replayTx);
+  }
 
   const isValidOwner = await degenClient.readContract({
     abi: coinbaseSmartWalletAbi,
@@ -207,7 +222,7 @@ async function main() {
 
   console.log("isValidOwner", isValidOwner);
 
-  if (!isValidOwner) {
+  if (!ownerCount) {
     throw new Error("Invalid owner");
   }
 

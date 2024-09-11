@@ -1,0 +1,26 @@
+diff --git a/_cjs/account-abstraction/accounts/implementations/toCoinbaseSmartAccount.js b/_cjs/account-abstraction/accounts/implementations/toCoinbaseSmartAccount.js
+index 94a9351a4294597ac89b879b5c58b56a14062ee1..b1ea5610a47360d79e911404055b8710e994d2de 100644
+--- a/_cjs/account-abstraction/accounts/implementations/toCoinbaseSmartAccount.js
++++ b/_cjs/account-abstraction/accounts/implementations/toCoinbaseSmartAccount.js
+@@ -220,7 +220,7 @@ function toWebAuthnSignature({ webauthn, signature, }) {
+     ]);
+ }
+ function wrapSignature(parameters) {
+-    const { ownerIndex = 0 } = parameters;
++    const { ownerIndex = 1 } = parameters;
+     const signatureData = (() => {
+         if ((0, size_js_1.size)(parameters.signature) !== 65)
+             return parameters.signature;
+diff --git a/_esm/account-abstraction/accounts/implementations/toCoinbaseSmartAccount.js b/_esm/account-abstraction/accounts/implementations/toCoinbaseSmartAccount.js
+index 500152b0f18158da7e08cc60c63a59f0782f9ceb..c81060c549489a0b3a8c2bd8b628dbbbb7844fd6 100644
+--- a/_esm/account-abstraction/accounts/implementations/toCoinbaseSmartAccount.js
++++ b/_esm/account-abstraction/accounts/implementations/toCoinbaseSmartAccount.js
+@@ -238,7 +238,7 @@ export function toWebAuthnSignature({ webauthn, signature, }) {
+ }
+ /** @internal */
+ export function wrapSignature(parameters) {
+-    const { ownerIndex = 0 } = parameters;
++    const { ownerIndex = 1 } = parameters;
+     const signatureData = (() => {
+         if (size(parameters.signature) !== 65)
+             return parameters.signature;

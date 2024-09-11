@@ -16,7 +16,7 @@ It does the following:
 ## Usage
 
 ```
-npx rescue-degen-airdrop --wallet <wallet-address> --destination <destination-address>
+npx rescue-degen-airdrop@latest --wallet <wallet-address> --destination <destination-address>
 
 Options:
   --help         Show help                                    [boolean]
