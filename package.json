@@ -1,9 +1,10 @@
 {
   "name": "rescue-degen-airdrop",
-  "version": "1.0.1",
+  "version": "1.0.3",
   "description": "A script for rescuing degen airdrops",
-  "main": "./dist/index.js",
-  "types": "./dist/index.d.ts",
+  "bin": {
+    "rescue-degen-airdrop": "./dist/index.js"
+  },
   "files": [
     "dist"
   ],
