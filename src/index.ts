@@ -28,7 +28,8 @@ import { coinbaseSmartWalletAbi } from "./abi/CoinbaseSmartWallet";
 
 const DEGEN_RPC_URL = process.env.RPC_URL_666666666 || "https://rpc.degen.tips";
 const TENDERLY_RPC_URL =
-  process.env.TENDERLY_RPC_URL || "https://tenderly-rpc-proxy.vercel.app";
+  process.env.TENDERLY_RPC_URL ||
+  "https://tenderly-rpc-proxy.stephan-cloudflare.workers.dev";
 
 // Parse command line arguments
 const argv = yargs(hideBin(process.argv))
